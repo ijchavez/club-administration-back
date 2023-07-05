@@ -1,0 +1,27 @@
+server:
+    port: ${PORT:5000}
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        clientId: 337530417957-2duko0bfs2873vv7k5nlrqdtsaqe5ufv.apps.googleusercontent.com
+                        client-secret: 337530417957-2duko0bfs2873vv7k5nlrqdtsaqe5ufv.apps.googleusercontent.com
+                        redirectUri: 337530417957-2duko0bfs2873vv7k5nlrqdtsaqe5ufv.apps.googleusercontent.com
+    application:
+        name: club-administration
+    servlet:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB
+    data:
+        mongodb:
+            uri: mongodb://jcarmenate:y73PAeOtxZ5nuij7@cluster0-shard-00-00.a02vu.mongodb.net:27017,cluster0-shard-00-01.a02vu.mongodb.net:27017,cluster0-shard-00-02.a02vu.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-p4aob5-shard-0&authSource=admin&retryWrites=true&w=majority
+            #uri: mongodb://localhost:27017/admin
+club:
+    origins: https://club-administration-front-66stqlmgc-jlcarmenate2017.vercel.app,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000
+platform:
+    jwtSecret: publishSecretKey
+    jwtExpirationMs: 86400000
+    secretPassword: Showar123!456*ñasdAsd

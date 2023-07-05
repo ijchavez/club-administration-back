@@ -1,0 +1,75 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "com.google.cloud.tools.jib" version "2.6.0"
+    id 'java'
+}
+
+group = 'uy.com.club.administration'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+task stage {
+    dependsOn build
+}
+jar {
+    manifest {
+        attributes 'ClubAdministrationApplication': 'ClubAdministrationApplication',
+                'Main-Class': 'uy.com.club.administration.ClubAdministrationApplication'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xdoclint:none', '-Xlint:none', '-nowarn']
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    set('mapstructVersion', '1.4.2.Final')
+    set('problemSpringWebVersion', '0.26.2')
+    set('swaggerVersion', '3.0.0')
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.5.4'
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+    implementation 'io.jsonwebtoken:jjwt:0.6.0'
+    implementation group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.4.6'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
+    implementation "org.zalando:problem-spring-web:${problemSpringWebVersion}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    implementation ("io.springfox:springfox-boot-starter:${swaggerVersion}") {
+        exclude module: "mapstruct"
+    }
+
+
+    compileOnly 'javax.xml.bind:jaxb-api:2.1'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}

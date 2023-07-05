@@ -1,0 +1,65 @@
+package uy.com.club.administration.config;
+
+import io.swagger.annotations.ApiParam;
+import lombok.Data;
+import lombok.Getter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.mapping.Unwrapped;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.*;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.web.plugins.Docket;
+
+import java.awt.print.Pageable;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+@Configuration
+public class SwaggerConfiguration {
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .securityContexts(Arrays.asList(securityContext()))
+                .securitySchemes(Arrays.asList(apiKey()))
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiKey apiKey() {
+        return new ApiKey("JWT", "Authorization", "header");
+    }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder().securityReferences(defaultAuth()).build();
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "Club Administration",
+                "Club Administration.",
+                "1.0.0",
+                "Terms of service",
+                new Contact(
+                        "Club Administration",
+                        "www.google.com",
+                        "jcarmenate@geocom.com.uy"
+                ), "License of API",
+                "API license URL",
+                Collections.emptyList()
+        );
+    }
+}
