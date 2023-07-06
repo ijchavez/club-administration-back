@@ -17,10 +17,10 @@ spring:
             max-request-size: 100MB
     data:
         mongodb:
-            uri: mongodb://admin:admin@ac-gbfrbp0-shard-00-00.ykgdcjz.mongodb.net:27017,ac-gbfrbp0-shard-00-01.ykgdcjz.mongodb.net:27017,ac-gbfrbp0-shard-00-02.ykgdcjz.mongodb.net:27017/UnionAtletica?ssl=true&replicaSet=atlas-23qyi9-shard-0&authSource=admin&retryWrites=true&w=majority
+            uri: mongodb://root:root@ac-ikvttqa-shard-00-00.vsyhddu.mongodb.net:27017,ac-ikvttqa-shard-00-01.vsyhddu.mongodb.net:27017,ac-ikvttqa-shard-00-02.vsyhddu.mongodb.net:27017/club-administration?ssl=true&replicaSet=atlas-9zq0nu-shard-0&authSource=admin&retryWrites=true&w=majority
             #uri: mongodb://localhost:27017/admin
 club:
-    origins: https://club-administration-front-66stqlmgc-jlcarmenate2017.vercel.app,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000
+    origins: https://club-administration-front-66stqlmgc-jlcarmenate2017.vercel.app,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000,https://club-administration-front-hn3t-lycc1qd8g-ijchavez.vercel.app
 platform:
     jwtSecret: publishSecretKey
     jwtExpirationMs: 86400000

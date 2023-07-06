@@ -50,7 +50,7 @@ public class MongoConfig {
                         .build();
 
         mongo.setMongoClientSettings(settings);
-       // mongo.setCredential(new MongoCredential[] {settings.getCredential()});
+        mongo.setCredential(new MongoCredential[] {settings.getCredential()});
         return mongo;
     }
 
