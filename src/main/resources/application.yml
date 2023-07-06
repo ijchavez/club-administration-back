@@ -17,7 +17,7 @@ spring:
             max-request-size: 100MB
     data:
         mongodb:
-            uri: mongodb://jcarmenate:y73PAeOtxZ5nuij7@cluster0-shard-00-00.a02vu.mongodb.net:27017,cluster0-shard-00-01.a02vu.mongodb.net:27017,cluster0-shard-00-02.a02vu.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-p4aob5-shard-0&authSource=admin&retryWrites=true&w=majority
+            uri: mongodb://admin:admin@ac-gbfrbp0-shard-00-00.ykgdcjz.mongodb.net:27017,ac-gbfrbp0-shard-00-01.ykgdcjz.mongodb.net:27017,ac-gbfrbp0-shard-00-02.ykgdcjz.mongodb.net:27017/UnionAtletica?ssl=true&replicaSet=atlas-23qyi9-shard-0&authSource=admin&retryWrites=true&w=majority
             #uri: mongodb://localhost:27017/admin
 club:
     origins: https://club-administration-front-66stqlmgc-jlcarmenate2017.vercel.app,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000
