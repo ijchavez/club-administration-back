@@ -20,7 +20,7 @@ spring:
             uri: mongodb://root:root@ac-ikvttqa-shard-00-00.vsyhddu.mongodb.net:27017,ac-ikvttqa-shard-00-01.vsyhddu.mongodb.net:27017,ac-ikvttqa-shard-00-02.vsyhddu.mongodb.net:27017/club-administration?ssl=true&replicaSet=atlas-9zq0nu-shard-0&authSource=admin&retryWrites=true&w=majority
             #uri: mongodb://localhost:27017/admin
 club:
-    origins: https://club-administration-front-hn3t.vercel.app/,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000,https://club-administration.onrender.com/#/auth/login,https://club-administration.onrender.com
+    origins: https://club-administration-front-hn3t-40hb66go9-ijchavez.vercel.app,https://club-administration-front-hn3t.vercel.app,https://club-administration-front.vercel.app,http://localhost:4200,http://localhost:5000,https://club-administration.onrender.com/#/auth/login,https://club-administration.onrender.com
 platform:
     jwtSecret: publishSecretKey
     jwtExpirationMs: 86400000
